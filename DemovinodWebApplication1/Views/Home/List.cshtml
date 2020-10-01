@@ -1,0 +1,108 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+
+@model IPagedList<BusinessLayer.ViewModels.EmployeeViewModel>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Details</h4>
+            </div>
+            <div class="modal-body">
+                <p id="myModalContent">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+@using (Html.BeginForm("List", "Home", FormMethod.Get))
+{
+    <p>
+        @Html.RadioButton("searchby", "name", true)Name
+        @Html.RadioButton("searchby", "gender")Gender<br />
+
+        @Html.TextBox("search")
+        <input type="submit" value="Search" />
+
+    </p>
+}
+
+@{Html.RenderPartial("_Gridview", Model);}
+
+@*@Html.Partial("_GridView", Model)*@
+
+
+@Html.PagedListPager(Model, Page => Url.Action("List", new { Page, searchby = Request.QueryString["searchby"], search = Request.QueryString["search"] }))
+@Html.Action("Districts", new {dist=new List<string> {"Ernakulam","Thrissur","Kannur"} })
+
+@section scripts
+    {
+
+    <link href="~/Content/jquery-ui.theme.css" rel="stylesheet" />
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#search").autocomplete({
+                source: '@Url.Action("GetEmployee")',
+                minLength:1
+            });
+        });
+        $(function () {
+                $(".Detail").click(function () {
+
+                    var $buttonClicked = $(this);
+                    var id = $buttonClicked.attr('data-id');
+                    var options = { "backdrop": "static", keyboard: true };
+                    $.ajax({
+                        type: "GET",
+                        url: '@Url.Action("Details", "Home")',
+                        contentType: "application/json; charset=utf-8",
+                        data: { "Id": id },
+                        datatype: "json",
+                        success: function (data) {
+
+                            $('#myModalContent').html(data);
+                            $('#myModal').modal(options);
+                            $('#myModal').modal('show');
+
+                        },
+                        error: function () {
+                            alert("Dynamic content load failed.");
+                        }
+                    });
+                });
+         });
+
+
+            $("#closbtn").click(function () {
+                $('#myModal').modal('hide');
+            });
+    </script>
+
+}

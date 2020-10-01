@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Method";
+}
+
+<h2>Method</h2>
+<p>This is my first project</p>
+<h5>
+    @ViewBag.Name
+    @ViewData["Name"]
+</h5>
+
+ @{ 
+     int a = 10;
+     int b = 5;
+ }
+@a<br/>
+@b
+@if (a > 5)
+{
+    <text>greater</text>
+}
+@Html.TextBox("username")

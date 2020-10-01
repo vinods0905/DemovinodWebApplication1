@@ -1,0 +1,12 @@
+H:\.net training\DemovinodWebApplication1\BusinessLayer\bin\Debug\BusinessLayer.dll
+H:\.net training\DemovinodWebApplication1\BusinessLayer\bin\Debug\BusinessLayer.pdb
+H:\.net training\DemovinodWebApplication1\BusinessLayer\obj\Debug\BusinessLayer.csprojAssemblyReference.cache
+H:\.net training\DemovinodWebApplication1\BusinessLayer\obj\Debug\BusinessLayer.csproj.CoreCompileInputs.cache
+H:\.net training\DemovinodWebApplication1\BusinessLayer\obj\Debug\BusinessLayer.dll
+H:\.net training\DemovinodWebApplication1\BusinessLayer\obj\Debug\BusinessLayer.pdb
+H:\.net training\DemovinodWebApplication1\BusinessLayer\bin\Debug\BusinessLayer.dll.config
+H:\.net training\DemovinodWebApplication1\BusinessLayer\bin\Debug\EntityFramework.dll
+H:\.net training\DemovinodWebApplication1\BusinessLayer\bin\Debug\EntityFramework.SqlServer.dll
+H:\.net training\DemovinodWebApplication1\BusinessLayer\bin\Debug\EntityFramework.xml
+H:\.net training\DemovinodWebApplication1\BusinessLayer\bin\Debug\EntityFramework.SqlServer.xml
+H:\.net training\DemovinodWebApplication1\BusinessLayer\obj\Debug\BusinessLayer.csproj.CopyComplete

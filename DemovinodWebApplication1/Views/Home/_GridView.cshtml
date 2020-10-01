@@ -1,0 +1,70 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+
+
+@model IPagedList<BusinessLayer.ViewModels.EmployeeViewModel>
+
+@using (Html.BeginForm("MultiDelete", "Home", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                Select
+            </th>
+            <th>
+                @Html.ActionLink("Employee Name", "List", new { Sort = ViewBag.Sorting })
+                @*@Html.DisplayNameFor(model => model.First().EmployeeName)*@
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DepartmentName)                
+
+            <th>
+                Action
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <input type="checkbox" name="empid" id="empid" value="@item.EmpId" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartmentName)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EmpId }, new { @class = "btn btn-primary" })
+
+                    @*@Html.ActionLink("Details", "Details", new { id = item.EmpId }, new { @class = "btn btn-primary" })*@
+                    <a href="javascript:void(0);" class="Detail" data-id="@item.EmpId">Details</a>
+
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EmpId }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <input type="submit" value="Multi Delete" />
+}

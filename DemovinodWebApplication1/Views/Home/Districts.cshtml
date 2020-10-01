@@ -1,0 +1,20 @@
+﻿@model List<string>
+
+@{
+    ViewBag.Title = "Districts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Districts</h2>
+
+@foreach(var dist in Model )
+{
+    <ul>
+        <li>
+            <b>
+                @dist
+            </b>
+        </li>
+    </ul>
+}
+
